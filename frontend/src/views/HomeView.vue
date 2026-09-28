@@ -23,7 +23,7 @@
         <div class="flex min-w-0 flex-1 items-center gap-3">
           <img
             :src="siteLogo || '/logo.svg'"
-            alt="Logo"
+            :alt="siteName"
             class="h-9 w-9 shrink-0 rounded-lg object-contain"
           />
           <span class="min-w-0 truncate text-base font-semibold">{{ siteName }}</span>
@@ -71,7 +71,7 @@
       <div class="min-w-0 max-w-2xl text-center">
         <img
           :src="siteLogo || '/logo.svg'"
-          alt="Logo"
+          :alt="siteName"
           class="mx-auto mb-6 h-20 w-20 rounded-2xl object-contain"
         />
         <h1 class="[overflow-wrap:anywhere] text-3xl font-bold md:text-4xl">{{ siteName }}</h1>
@@ -101,11 +101,11 @@
         <!-- Logo -->
         <div class="home-brand flex items-center gap-3">
           <div class="home-logo h-10 w-10 overflow-hidden">
-            <img :src="siteLogo || '/logo.svg'" alt="Logo" class="h-full w-full object-contain" />
+            <img :src="siteLogo || '/logo.svg'" :alt="siteName" class="h-full w-full object-contain" />
           </div>
           <div class="home-brand-copy">
             <span class="home-brand-name">{{ siteName }}</span>
-            <span class="home-brand-kicker">API GATEWAY · SELF HOSTED</span>
+            <span class="home-brand-kicker">{{ t('home.brandKicker') }}</span>
           </div>
         </div>
 
@@ -191,7 +191,7 @@
         <section class="home-hero mb-12 flex flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
           <!-- Left: Text Content -->
           <div class="home-hero-copy flex-1 text-center lg:text-left">
-            <p class="home-eyebrow"><span>✦</span> SUB2API · OPEN SOURCE GATEWAY</p>
+            <p class="home-eyebrow"><span>✦</span> {{ t('home.eyebrow') }}</p>
             <h1
               class="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"
             >
@@ -222,8 +222,8 @@
                 {{ t('home.viewOnGithub') }} <span aria-hidden="true">↗</span>
               </a>
             </div>
-            <div class="home-meta" aria-label="Project details">
-              <span>SELF HOSTED</span><i>·</i><span>OPEN SOURCE</span><i>·</i><span>ONE API</span>
+            <div class="home-meta" :aria-label="t('home.metaLabel')">
+              <span>{{ t('home.meta.selfHosted') }}</span><i>·</i><span>{{ t('home.meta.unifiedApi') }}</span><i>·</i><span>{{ t('home.meta.usageVisible') }}</span>
             </div>
           </div>
 
@@ -238,23 +238,25 @@
                     <span class="btn-minimize"></span>
                     <span class="btn-maximize"></span>
                   </div>
-                  <span class="terminal-title">example request</span>
+                  <span class="terminal-title">{{ t('home.requestExampleTitle') }}</span>
                 </div>
                 <!-- Terminal content -->
                 <div class="terminal-body">
                   <div class="code-line line-1">
                     <span class="code-prompt">$</span>
                     <span class="code-cmd">curl</span>
-                    <span class="code-url">/v1/messages</span>
+                    <span class="code-url">"$API_BASE_URL/v1/chat/completions" \</span>
                   </div>
                   <div class="code-line line-2">
-                    <span class="code-flag">-H</span>
-                    <span class="code-response">"Authorization: Bearer $TOKEN"</span>
+                    <span class="code-flag">-H "Authorization: Bearer $API_KEY" \</span>
                   </div>
                   <div class="code-line line-3">
-                    <span class="code-comment"># route once, switch providers later</span>
+                    <span class="code-flag">-H "Content-Type: application/json" \</span>
                   </div>
                   <div class="code-line line-4">
+                    <span class="code-response">-d @request.json</span>
+                  </div>
+                  <div class="code-line line-5">
                     <span class="code-prompt">$</span>
                     <span class="cursor"></span>
                   </div>
@@ -296,8 +298,9 @@
         <section class="home-feature-section">
           <div class="home-section-heading">
             <h2>{{ t('home.solutions.title') }}</h2>
-            <span>FEATURES</span>
+            <span>{{ t('home.solutions.label') }}</span>
           </div>
+          <p class="home-section-subtitle">{{ t('home.solutions.subtitle') }}</p>
           <div class="home-feature-grid mb-12 grid gap-6 md:grid-cols-3">
           <!-- Feature 1: Unified Gateway -->
             <div
@@ -373,6 +376,36 @@
               {{ t('home.features.balanceQuotaDesc') }}
             </p>
             </div>
+          </div>
+        </section>
+
+        <!-- Quick start: concrete steps instead of a generic marketing promise. -->
+        <section class="home-quick-start" aria-labelledby="quick-start-title">
+          <div class="home-section-heading">
+            <h2 id="quick-start-title">{{ t('home.quickStart.title') }}</h2>
+            <span>{{ t('home.quickStart.label') }}</span>
+          </div>
+          <p class="home-section-subtitle">{{ t('home.quickStart.subtitle') }}</p>
+          <div class="home-steps-grid">
+            <article class="home-step-card">
+              <span class="home-step-number">01</span>
+              <h3>{{ t('home.quickStart.steps.createKey.title') }}</h3>
+              <p>{{ t('home.quickStart.steps.createKey.desc') }}</p>
+            </article>
+            <article class="home-step-card">
+              <span class="home-step-number">02</span>
+              <h3>{{ t('home.quickStart.steps.switchEndpoint.title') }}</h3>
+              <p>{{ t('home.quickStart.steps.switchEndpoint.desc') }}</p>
+            </article>
+            <article class="home-step-card">
+              <span class="home-step-number">03</span>
+              <h3>{{ t('home.quickStart.steps.watchUsage.title') }}</h3>
+              <p>{{ t('home.quickStart.steps.watchUsage.desc') }}</p>
+            </article>
+          </div>
+          <div class="home-service-note">
+            <strong>{{ t('home.serviceNote.title') }}</strong>
+            <span>{{ t('home.serviceNote.description') }}</span>
           </div>
         </section>
 
@@ -515,9 +548,9 @@ const authStore = useAuthStore()
 const appStore = useAppStore()
 
 // Site settings - directly from appStore (already initialized from injected config)
-const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || 'Sub2API')
+const siteName = computed(() => appStore.cachedPublicSettings?.site_name || appStore.siteName || '兽浮云')
 const siteLogo = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.site_logo || appStore.siteLogo || '', { allowRelative: true, allowDataUrl: true }))
-const siteSubtitle = computed(() => appStore.cachedPublicSettings?.site_subtitle || 'AI API Gateway Platform')
+const siteSubtitle = computed(() => appStore.cachedPublicSettings?.site_subtitle || '面向开发者与团队的 AI API 中转站')
 const docUrl = computed(() => sanitizeUrl(appStore.cachedPublicSettings?.doc_url || appStore.docUrl || ''))
 const homeContent = computed(() => appStore.cachedPublicSettings?.home_content || '')
 const hasHomeContent = computed(() => homeContent.value.trim().length > 0)
@@ -679,6 +712,9 @@ onMounted(() => {
 }
 .line-4 {
   animation-delay: 2.5s;
+}
+.line-5 {
+  animation-delay: 3.1s;
 }
 
 @keyframes line-appear {
@@ -1107,6 +1143,14 @@ onMounted(() => {
   font-weight: 800;
 }
 
+.home-section-subtitle {
+  max-width: 680px;
+  margin: -8px 0 22px;
+  color: var(--home-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
 .home-section-heading span {
   color: #7c5ce0;
   font-size: 10px;
@@ -1176,6 +1220,70 @@ onMounted(() => {
   color: var(--home-muted) !important;
   font-size: 13px !important;
   line-height: 1.75 !important;
+}
+
+.home-quick-start {
+  margin-bottom: 88px;
+}
+
+.home-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.home-step-card {
+  min-width: 0;
+  border: 1px solid var(--home-line);
+  border-radius: 8px;
+  background: var(--home-paper);
+  padding: 22px 20px 20px;
+}
+
+.home-step-number {
+  display: inline-block;
+  margin-bottom: 26px;
+  color: #078a52;
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.home-step-card h3 {
+  margin: 0 0 8px;
+  color: var(--home-ink);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.home-step-card p {
+  margin: 0;
+  color: var(--home-muted);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+.home-service-note {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-top: 14px;
+  border-left: 3px solid #078a52;
+  padding: 12px 16px;
+  background: var(--home-mint);
+  color: var(--home-ink);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.home-service-note strong {
+  flex: 0 0 auto;
+  font-weight: 800;
+}
+
+.home-service-note span {
+  color: var(--home-muted);
 }
 
 .home-provider-heading {
@@ -1305,6 +1413,9 @@ onMounted(() => {
   .home-tags { margin-bottom: 54px !important; }
   .home-section-heading { align-items: flex-start; flex-direction: column; gap: 5px; }
   .home-feature-grid { margin-bottom: 64px !important; }
+  .home-quick-start { margin-bottom: 64px; }
+  .home-steps-grid { grid-template-columns: 1fr; }
+  .home-service-note { align-items: flex-start; flex-direction: column; gap: 3px; }
   .home-provider-heading { text-align: left !important; }
   .home-shell > footer > div { align-items: flex-start !important; text-align: left !important; }
 }

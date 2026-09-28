@@ -5,6 +5,15 @@ export default {
   },
   // Home Page
   home: {
+    brandKicker: 'AI API relay platform',
+    eyebrow: 'Model access, group routing and usage—in one console',
+    requestExampleTitle: 'OpenAI-compatible request',
+    metaLabel: '兽浮云 platform features',
+    meta: {
+      selfHosted: 'Unified API endpoint',
+      unifiedApi: 'Accounts and group routing',
+      usageVisible: 'Request-level usage records'
+    },
     viewOnGithub: 'View on GitHub',
     viewDocs: 'View Documentation',
     docs: 'Docs',
@@ -15,12 +24,12 @@ export default {
     getStarted: 'Get Started',
     goToDashboard: 'Go to Dashboard',
     // User-focused value proposition
-    heroSubtitle: 'One Key, All AI Models',
-    heroDescription: 'No need to manage multiple subscriptions. Access Claude, GPT, Gemini and more with a single API key',
+    heroSubtitle: 'Manage AI API access and day-to-day operations in one console',
+    heroDescription: '兽浮云 gives developers and teams one place to manage upstream accounts, API keys, groups and request usage.',
     tags: {
-      subscriptionToApi: 'Subscription to API',
-      stickySession: 'Session Persistence',
-      realtimeBilling: 'Pay As You Go'
+      subscriptionToApi: 'Unified API endpoint',
+      stickySession: 'Account and group routing',
+      realtimeBilling: 'Request-level usage records'
     },
     // Pain points section
     painPoints: {
@@ -46,16 +55,40 @@ export default {
     },
     // Solutions section
     solutions: {
-      title: 'We Solve These Problems',
-      subtitle: 'Three simple steps to stress-free AI access'
+      title: 'From integration to usage, in one place',
+      label: '兽浮云 platform',
+      subtitle: 'Upstream accounts, API keys, group routing and billing details—organized around actual API calls.'
     },
     features: {
-      unifiedGateway: 'One-Click Access',
-      unifiedGatewayDesc: 'Get a single API key to call all connected AI models. No separate applications needed.',
-      multiAccount: 'Always Reliable',
-      multiAccountDesc: 'Smart routing across multiple upstream accounts with automatic failover. Say goodbye to errors.',
-      balanceQuota: 'Pay What You Use',
-      balanceQuotaDesc: 'Usage-based billing with quota limits. Full visibility into team consumption.'
+      unifiedGateway: 'Unified API access',
+      unifiedGatewayDesc: 'Configure a common entry point and keys for your apps, using the endpoint compatible with each client and protocol.',
+      multiAccount: 'Accounts and groups',
+      multiAccountDesc: 'Add provider accounts, then use groups and routing rules to manage available models and access.',
+      balanceQuota: 'Billing and usage records',
+      balanceQuotaDesc: 'Review model, tokens, duration and charges per request, and set available quotas for each key.'
+    },
+    quickStart: {
+      title: 'From setup to your first request',
+      label: 'Quick start',
+      subtitle: 'An admin prepares upstream accounts and groups; users create keys and configure the API endpoint.',
+      steps: {
+        createKey: {
+          title: 'Connect an upstream account',
+          desc: 'Add an authorized AI service account and check its credentials and available models.'
+        },
+        switchEndpoint: {
+          title: 'Configure a group and API key',
+          desc: 'Set routing scope, rates and quotas, then create a separate key for each app or member.'
+        },
+        watchUsage: {
+          title: 'Connect your app and review usage',
+          desc: 'Point your client to the 兽浮云 API endpoint and review results and charges per request.'
+        }
+      }
+    },
+    serviceNote: {
+      title: 'Designed for team operations',
+      description: 'Use separate keys for different apps, manage routing and quotas by group, and review billing and request records whenever needed.'
     },
     // Comparison section
     comparison: {
@@ -94,8 +127,8 @@ export default {
       }
     },
     providers: {
-      title: 'Supported AI Models',
-      description: 'One API, Multiple Choices',
+      title: 'Model services you can connect',
+      description: 'Availability depends on site configuration and upstream authorization; check the console for enabled models.',
       supported: 'Supported',
       soon: 'Soon',
       claude: 'Claude',
@@ -106,7 +139,7 @@ export default {
     // CTA section
     cta: {
       title: 'Ready to Get Started?',
-      description: 'Sign up now and get free trial credits to experience seamless AI access',
+      description: 'Create an API key after signing up and connect your application to the 兽浮云 API.',
       button: 'Sign Up Free'
     },
     footer: {
@@ -192,8 +225,8 @@ export default {
 
   // Setup Wizard
   setup: {
-    title: 'Sub2API Setup',
-    description: 'Configure your Sub2API instance',
+    title: '兽浮云 Setup',
+    description: 'Configure your 兽浮云 instance',
     database: {
       title: 'Database Configuration',
       description: 'Connect to your PostgreSQL database',

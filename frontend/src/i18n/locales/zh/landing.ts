@@ -5,6 +5,15 @@ export default {
   },
   // Home Page
   home: {
+    brandKicker: 'AI API 中转站',
+    eyebrow: '模型接入、分组路由、用量统计，一处管理',
+    requestExampleTitle: 'OpenAI 兼容接口示例',
+    metaLabel: '兽浮云平台特性',
+    meta: {
+      selfHosted: '统一 API 入口',
+      unifiedApi: '账号与分组路由',
+      usageVisible: '请求与用量可查'
+    },
     viewOnGithub: '在 GitHub 上查看',
     viewDocs: '查看文档',
     docs: '文档',
@@ -15,12 +24,12 @@ export default {
     getStarted: '立即开始',
     goToDashboard: '进入控制台',
     // 新增：面向用户的价值主张
-    heroSubtitle: '一个密钥，畅用多个 AI 模型',
-    heroDescription: '无需管理多个订阅账号，一站式接入 Claude、GPT、Gemini 等主流 AI 服务',
+    heroSubtitle: '把 AI API 接入与日常管理放在一个控制台',
+    heroDescription: '兽浮云为开发者与团队提供统一的 AI API 接入：集中管理上游账号、API 密钥、分组和请求用量。',
     tags: {
-      subscriptionToApi: '订阅转 API',
-      stickySession: '会话保持',
-      realtimeBilling: '按量计费'
+      subscriptionToApi: '统一 API 入口',
+      stickySession: '账号与分组路由',
+      realtimeBilling: '请求用量可查'
     },
     // 用户痛点区块
     painPoints: {
@@ -46,16 +55,40 @@ export default {
     },
     // 解决方案区块
     solutions: {
-      title: '我们帮你解决',
-      subtitle: '简单三步，开始省心使用 AI'
+      title: '从接入到用量，一处管理',
+      label: '兽浮云平台',
+      subtitle: '上游账号、API 密钥、分组路由与账单明细，围绕实际调用流程组织。'
     },
     features: {
-      unifiedGateway: '一键接入',
-      unifiedGatewayDesc: '获取一个 API 密钥，即可调用所有已接入的 AI 模型，无需分别申请。',
-      multiAccount: '稳定可靠',
-      multiAccountDesc: '智能调度多个上游账号，自动切换和负载均衡，告别频繁报错。',
-      balanceQuota: '用多少付多少',
-      balanceQuotaDesc: '按实际使用量计费，支持设置配额上限，团队用量一目了然。'
+      unifiedGateway: '统一 API 接入',
+      unifiedGatewayDesc: '为应用配置统一入口与密钥，并按客户端和接口协议使用对应端点。',
+      multiAccount: '上游账号与分组',
+      multiAccountDesc: '按服务商添加账号，通过分组和路由策略管理可用模型与调用范围。',
+      balanceQuota: '账单和用量记录',
+      balanceQuotaDesc: '按请求查看模型、Token、耗时与扣费，并为密钥配置可用额度。'
+    },
+    quickStart: {
+      title: '从配置到第一次调用',
+      label: '快速上手',
+      subtitle: '管理员准备上游账号与分组；使用者创建密钥并配置 API 地址。',
+      steps: {
+        createKey: {
+          title: '接入上游账号',
+          desc: '添加已获授权的 AI 服务账号，并核对凭据和可用模型。'
+        },
+        switchEndpoint: {
+          title: '配置分组和 API Key',
+          desc: '整理路由范围、费率与额度，为应用或成员创建独立密钥。'
+        },
+        watchUsage: {
+          title: '接入应用并查看用量',
+          desc: '将客户端指向兽浮云 API 地址，按请求查看调用结果与消耗。'
+        }
+      }
+    },
+    serviceNote: {
+      title: '为团队日常管理而设计',
+      description: '不同应用使用独立密钥；通过分组管理路由和额度，账单与请求记录随时可查。'
     },
     // 优势对比
     comparison: {
@@ -94,8 +127,8 @@ export default {
       }
     },
     providers: {
-      title: '已支持的 AI 模型',
-      description: '一个 API，多种选择',
+      title: '可接入的模型服务',
+      description: '按站点配置和上游授权接入；实际可用模型以控制台配置为准。',
       supported: '已支持',
       soon: '即将推出',
       claude: 'Claude',
@@ -106,7 +139,7 @@ export default {
     // CTA 区块
     cta: {
       title: '准备好开始了吗？',
-      description: '注册即可获得免费试用额度，体验一站式 AI 服务',
+      description: '注册后创建 API Key，将你的应用接入兽浮云 API。',
       button: '免费注册'
     },
     footer: {
@@ -192,8 +225,8 @@ export default {
 
   // Setup Wizard
   setup: {
-    title: 'Sub2API 安装向导',
-    description: '配置您的 Sub2API 实例',
+    title: '兽浮云安装向导',
+    description: '配置您的兽浮云实例',
     database: {
       title: '数据库配置',
       description: '连接到您的 PostgreSQL 数据库',
