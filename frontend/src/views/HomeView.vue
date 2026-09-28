@@ -93,39 +93,24 @@
   <!-- Default Home Page -->
   <div
     v-else
-    class="relative flex min-h-screen flex-col overflow-hidden bg-gradient-to-br from-gray-50 via-primary-50/30 to-gray-100 dark:from-dark-950 dark:via-dark-900 dark:to-dark-950"
+    class="home-shell relative flex min-h-screen flex-col"
   >
-    <!-- Background Decorations -->
-    <div class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div
-        class="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-primary-400/20 blur-3xl"
-      ></div>
-      <div
-        class="absolute -bottom-40 -left-40 h-96 w-96 rounded-full bg-primary-500/15 blur-3xl"
-      ></div>
-      <div
-        class="absolute left-1/3 top-1/4 h-72 w-72 rounded-full bg-primary-300/10 blur-3xl"
-      ></div>
-      <div
-        class="absolute bottom-1/4 right-1/4 h-64 w-64 rounded-full bg-primary-400/10 blur-3xl"
-      ></div>
-      <div
-        class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"
-      ></div>
-    </div>
-
     <!-- Header -->
-    <header class="relative z-20 px-6 py-4">
-      <nav class="mx-auto flex max-w-6xl items-center justify-between">
+    <header class="home-header">
+      <nav class="home-nav mx-auto flex max-w-6xl items-center justify-between">
         <!-- Logo -->
-        <div class="flex items-center">
-          <div class="h-10 w-10 overflow-hidden rounded-xl shadow-md">
+        <div class="home-brand flex items-center gap-3">
+          <div class="home-logo h-10 w-10 overflow-hidden">
             <img :src="siteLogo || '/logo.svg'" alt="Logo" class="h-full w-full object-contain" />
+          </div>
+          <div class="home-brand-copy">
+            <span class="home-brand-name">{{ siteName }}</span>
+            <span class="home-brand-kicker">API GATEWAY · SELF HOSTED</span>
           </div>
         </div>
 
         <!-- Nav Actions -->
-        <div class="flex items-center gap-3">
+        <div class="home-actions flex items-center gap-3">
           <!-- Language Switcher -->
           <LocaleSwitcher />
 
@@ -135,7 +120,7 @@
             :href="docUrl"
             target="_blank"
             rel="noopener noreferrer"
-            class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
+            class="home-icon-link rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
             :title="t('home.viewDocs')"
           >
             <Icon name="book" size="md" />
@@ -145,7 +130,7 @@
           <router-link
             v-if="showModelPlazaEntry"
             to="/model-plaza"
-            class="inline-flex items-center gap-1.5 rounded-lg p-2 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
+            class="home-icon-link inline-flex items-center gap-1.5 rounded-lg p-2 text-sm text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
             :title="t('nav.modelPlaza')"
           >
             <Icon name="grid" size="md" />
@@ -155,7 +140,7 @@
           <!-- Theme Toggle -->
           <button
             @click="toggleTheme"
-            class="rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
+            class="home-icon-link rounded-lg p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-700 dark:text-dark-400 dark:hover:bg-dark-800 dark:hover:text-white"
             :title="isDark ? t('home.switchToLight') : t('home.switchToDark')"
           >
             <Icon v-if="isDark" name="sun" size="md" />
@@ -191,7 +176,7 @@
           <router-link
             v-else
             to="/login"
-            class="inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700"
+            class="home-login inline-flex items-center rounded-full bg-gray-900 px-3 py-1 text-xs font-medium text-white transition-colors hover:bg-gray-800 dark:bg-gray-800 dark:hover:bg-gray-700"
           >
             {{ t('home.login') }}
           </router-link>
@@ -200,23 +185,27 @@
     </header>
 
     <!-- Main Content -->
-    <main class="relative z-10 flex-1 px-6 py-16">
+    <main class="home-main relative z-10 flex-1 px-6 py-16">
       <div class="mx-auto max-w-6xl">
         <!-- Hero Section - Left/Right Layout -->
-        <div class="mb-12 flex flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
+        <section class="home-hero mb-12 flex flex-col items-center justify-between gap-12 lg:flex-row lg:gap-16">
           <!-- Left: Text Content -->
-          <div class="flex-1 text-center lg:text-left">
+          <div class="home-hero-copy flex-1 text-center lg:text-left">
+            <p class="home-eyebrow"><span>✦</span> SUB2API · OPEN SOURCE GATEWAY</p>
             <h1
               class="mb-4 text-4xl font-bold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"
             >
               {{ siteName }}
             </h1>
-            <p class="mb-8 text-lg text-gray-600 dark:text-dark-300 md:text-xl">
+            <p class="home-lede mb-3 text-lg text-gray-600 dark:text-dark-300 md:text-xl">
               {{ siteSubtitle }}
+            </p>
+            <p class="home-description mb-8 text-sm leading-relaxed text-gray-600 dark:text-dark-300">
+              {{ t('home.heroDescription') }}
             </p>
 
             <!-- CTA Button -->
-            <div>
+            <div class="home-hero-actions">
               <router-link
                 :to="isAuthenticated ? dashboardPath : '/login'"
                 class="btn btn-primary px-8 py-3 text-base shadow-lg shadow-primary-500/30"
@@ -224,10 +213,21 @@
                 {{ isAuthenticated ? t('home.goToDashboard') : t('home.getStarted') }}
                 <Icon name="arrowRight" size="md" class="ml-2" :stroke-width="2" />
               </router-link>
+              <a
+                :href="githubUrl"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="home-text-link"
+              >
+                {{ t('home.viewOnGithub') }} <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div class="home-meta" aria-label="Project details">
+              <span>SELF HOSTED</span><i>·</i><span>OPEN SOURCE</span><i>·</i><span>ONE API</span>
             </div>
           </div>
 
-          <!-- Right: Terminal Animation -->
+          <!-- Right: Example request -->
           <div class="flex flex-1 justify-center lg:justify-end">
             <div class="terminal-container">
               <div class="terminal-window">
@@ -238,22 +238,21 @@
                     <span class="btn-minimize"></span>
                     <span class="btn-maximize"></span>
                   </div>
-                  <span class="terminal-title">terminal</span>
+                  <span class="terminal-title">example request</span>
                 </div>
                 <!-- Terminal content -->
                 <div class="terminal-body">
                   <div class="code-line line-1">
                     <span class="code-prompt">$</span>
                     <span class="code-cmd">curl</span>
-                    <span class="code-flag">-X POST</span>
                     <span class="code-url">/v1/messages</span>
                   </div>
                   <div class="code-line line-2">
-                    <span class="code-comment"># Routing to upstream...</span>
+                    <span class="code-flag">-H</span>
+                    <span class="code-response">"Authorization: Bearer $TOKEN"</span>
                   </div>
                   <div class="code-line line-3">
-                    <span class="code-success">200 OK</span>
-                    <span class="code-response">{ "content": "Hello!" }</span>
+                    <span class="code-comment"># route once, switch providers later</span>
                   </div>
                   <div class="code-line line-4">
                     <span class="code-prompt">$</span>
@@ -263,10 +262,10 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <!-- Feature Tags - Centered -->
-        <div class="mb-12 flex flex-wrap items-center justify-center gap-4 md:gap-6">
+        <!-- Product notes -->
+        <div class="home-tags mb-12 flex flex-wrap items-center justify-center gap-4 md:gap-6">
           <div
             class="inline-flex items-center gap-2.5 rounded-full border border-gray-200/50 bg-white/80 px-5 py-2.5 shadow-sm backdrop-blur-sm dark:border-dark-700/50 dark:bg-dark-800/80"
           >
@@ -294,11 +293,16 @@
         </div>
 
         <!-- Features Grid -->
-        <div class="mb-12 grid gap-6 md:grid-cols-3">
+        <section class="home-feature-section">
+          <div class="home-section-heading">
+            <h2>{{ t('home.solutions.title') }}</h2>
+            <span>FEATURES</span>
+          </div>
+          <div class="home-feature-grid mb-12 grid gap-6 md:grid-cols-3">
           <!-- Feature 1: Unified Gateway -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
+            <div
+              class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
+            >
             <div
               class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 shadow-lg shadow-blue-500/30 transition-transform group-hover:scale-110"
             >
@@ -310,12 +314,12 @@
             <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
               {{ t('home.features.unifiedGatewayDesc') }}
             </p>
-          </div>
+            </div>
 
           <!-- Feature 2: Account Pool -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
+            <div
+              class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
+            >
             <div
               class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg shadow-primary-500/30 transition-transform group-hover:scale-110"
             >
@@ -339,12 +343,12 @@
             <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
               {{ t('home.features.multiAccountDesc') }}
             </p>
-          </div>
+            </div>
 
           <!-- Feature 3: Billing & Quota -->
-          <div
-            class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
-          >
+            <div
+              class="group rounded-2xl border border-gray-200/50 bg-white/60 p-6 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 dark:border-dark-700/50 dark:bg-dark-800/60"
+            >
             <div
               class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-600 shadow-lg shadow-purple-500/30 transition-transform group-hover:scale-110"
             >
@@ -368,11 +372,13 @@
             <p class="text-sm leading-relaxed text-gray-600 dark:text-dark-400">
               {{ t('home.features.balanceQuotaDesc') }}
             </p>
+            </div>
           </div>
-        </div>
+        </section>
 
         <!-- Supported Providers -->
-        <div class="mb-8 text-center">
+        <section class="home-provider-section">
+        <div class="home-provider-heading mb-8 text-center">
           <h2 class="mb-3 text-2xl font-bold text-gray-900 dark:text-white">
             {{ t('home.providers.title') }}
           </h2>
@@ -381,7 +387,7 @@
           </p>
         </div>
 
-        <div class="mb-16 flex flex-wrap items-center justify-center gap-4">
+        <div class="home-provider-list mb-16 flex flex-wrap items-center justify-center gap-4">
           <!-- Claude - Supported -->
           <div
             class="flex items-center gap-2 rounded-xl border border-primary-200 bg-white/60 px-5 py-3 ring-1 ring-primary-500/20 backdrop-blur-sm dark:border-primary-800 dark:bg-dark-800/60"
@@ -458,6 +464,7 @@
             >
           </div>
         </div>
+        </section>
       </div>
     </main>
 
@@ -527,7 +534,7 @@ const isHomeContentUrl = computed(() => {
 const isDark = ref(document.documentElement.classList.contains('dark'))
 
 // GitHub URL
-const githubUrl = 'https://github.com/Wei-Shaw/sub2api'
+const githubUrl = 'https://github.com/K2cr2O1/sub2api'
 
 // Auth state
 const isAuthenticated = computed(() => authStore.isAuthenticated)
@@ -740,5 +747,528 @@ onMounted(() => {
     0 0 0 1px rgba(20, 184, 166, 0.2),
     0 0 40px rgba(20, 184, 166, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+</style>
+
+<style scoped>
+/* Default home: paper-like layout with small, deliberate colour accents. */
+.home-shell {
+  --home-canvas: #faf9f7;
+  --home-paper: #ffffff;
+  --home-ink: #1a1a18;
+  --home-muted: #5d5a54;
+  --home-line: #dad4c8;
+  --home-mint: #d7f2e5;
+  --home-blue: #d7f2fb;
+  --home-yellow: #ffe7a7;
+  --home-pink: #ffd9dc;
+  box-sizing: border-box;
+  min-width: 0;
+  overflow-x: hidden;
+  background: var(--home-canvas) !important;
+  color: var(--home-ink);
+  font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+:global(.dark) .home-shell {
+  --home-canvas: #171b1a;
+  --home-paper: #202523;
+  --home-ink: #f3f1ea;
+  --home-muted: #adb5af;
+  --home-line: #3e4742;
+  --home-mint: #1e4f3c;
+  --home-blue: #1f4656;
+  --home-yellow: #6d5524;
+  --home-pink: #633b42;
+}
+
+.home-shell,
+.home-shell * {
+  box-sizing: border-box;
+}
+
+.home-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--home-line);
+  background: var(--home-canvas);
+  background: color-mix(in srgb, var(--home-canvas) 94%, transparent);
+  padding: 14px 24px !important;
+}
+
+.home-nav {
+  min-height: 42px;
+  max-width: 1120px !important;
+}
+
+.home-logo {
+  border: 1px solid var(--home-line);
+  border-radius: 10px;
+  background: var(--home-paper);
+}
+
+.home-brand-copy {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 3px;
+}
+
+.home-brand-name {
+  color: var(--home-ink);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.home-brand-kicker,
+.home-meta,
+.home-section-heading span,
+.home-tags > div span,
+.home-provider-list > div > span:last-child {
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.home-brand-kicker {
+  color: var(--home-muted);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.home-actions {
+  gap: 10px !important;
+}
+
+.home-icon-link,
+.home-actions button {
+  color: var(--home-muted) !important;
+}
+
+.home-icon-link:hover,
+.home-actions button:hover {
+  background: transparent !important;
+  color: var(--home-ink) !important;
+}
+
+.home-login,
+.home-shell header nav > div:last-child > a:last-child {
+  border: 1px solid var(--home-ink);
+  border-radius: 999px !important;
+  background: var(--home-ink) !important;
+  color: var(--home-canvas) !important;
+  padding: 9px 14px !important;
+}
+
+.home-login:hover,
+.home-shell header nav > div:last-child > a:last-child:hover {
+  background: transparent !important;
+  color: var(--home-ink) !important;
+}
+
+.home-main {
+  padding: 84px 24px 96px !important;
+}
+
+.home-main > div {
+  max-width: 1120px !important;
+}
+
+.home-hero {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center !important;
+  gap: 72px !important;
+  margin-bottom: 54px !important;
+}
+
+.home-hero-copy {
+  min-width: 0;
+  text-align: left !important;
+}
+
+.home-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 22px;
+  border: 1px dashed #a9c9d3;
+  border-radius: 999px;
+  padding: 7px 11px;
+  color: #286b79;
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.home-eyebrow > span {
+  display: inline;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: #0089ad;
+}
+
+.home-hero h1 {
+  max-width: 650px;
+  margin: 0 0 22px;
+  color: var(--home-ink) !important;
+  font-size: 68px !important;
+  font-weight: 800 !important;
+  letter-spacing: 0;
+  line-height: 1 !important;
+  overflow-wrap: anywhere;
+}
+
+.home-hero h1::after {
+  width: 58px;
+  height: 5px;
+  margin-top: 22px;
+  background: var(--home-yellow);
+}
+
+.home-lede {
+  max-width: 600px;
+  margin-bottom: 10px !important;
+  color: var(--home-ink) !important;
+  font-size: 20px !important;
+  font-weight: 600;
+  line-height: 1.4 !important;
+}
+
+.home-description {
+  max-width: 560px;
+  margin-bottom: 28px !important;
+  color: var(--home-muted) !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+
+.home-hero-actions {
+  display: flex !important;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.home-hero-actions > a {
+  margin-top: 0 !important;
+}
+
+.home-shell .btn.btn-primary {
+  border: 1px solid var(--home-ink);
+  border-radius: 4px;
+  background: var(--home-ink);
+  box-shadow: none;
+  color: var(--home-canvas);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.home-shell .btn.btn-primary:hover {
+  background: transparent;
+  color: var(--home-ink);
+}
+
+.home-text-link {
+  color: var(--home-ink);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--home-line);
+  text-underline-offset: 4px;
+}
+
+.home-text-link:hover {
+  text-decoration-color: var(--home-ink);
+}
+
+.home-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 26px;
+  color: var(--home-muted);
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+.home-meta i {
+  font-style: normal;
+  color: var(--home-line);
+}
+
+.home-hero > div:last-child {
+  min-width: 0;
+}
+
+.home-shell .terminal-container {
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.home-shell .terminal-window {
+  width: min(100%, 470px);
+  border: 1px solid var(--home-ink);
+  border-radius: 8px;
+  background: var(--home-paper);
+  box-shadow: 10px 10px 0 var(--home-yellow);
+  transform: none;
+}
+
+.home-shell .terminal-window:hover {
+  transform: translate(-2px, -2px);
+}
+
+.home-shell .terminal-header {
+  border-bottom: 1px solid var(--home-line);
+  background: var(--home-paper);
+}
+
+.home-shell .terminal-title {
+  color: var(--home-muted);
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-shell .terminal-body {
+  min-height: 146px;
+  padding: 24px;
+  background: var(--home-paper);
+  color: var(--home-ink);
+  font-family: 'Space Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  line-height: 2.2;
+}
+
+.home-shell .terminal-body .code-line {
+  opacity: 1;
+  animation: none;
+}
+
+.home-shell .code-prompt { color: #078a52; }
+.home-shell .code-cmd { color: #01418d; }
+.home-shell .code-flag { color: #7c5ce0; }
+.home-shell .code-url { color: #0089ad; }
+.home-shell .code-comment { color: var(--home-muted); }
+.home-shell .code-response { color: var(--home-ink); }
+.home-shell .cursor { background: var(--home-ink); }
+
+.home-tags {
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  margin-bottom: 72px !important;
+}
+
+.home-tags > div {
+  border: 1px solid var(--home-line) !important;
+  border-radius: 999px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 8px 12px !important;
+  backdrop-filter: none !important;
+}
+
+.home-tags > div svg {
+  color: #078a52 !important;
+}
+
+.home-tags > div span {
+  color: var(--home-muted) !important;
+  font-size: 10px !important;
+  letter-spacing: 0.02em;
+}
+
+.home-feature-section,
+.home-provider-section {
+  margin-top: 0;
+}
+
+.home-section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--home-line);
+  padding-bottom: 12px;
+}
+
+.home-section-heading h2 {
+  margin: 0;
+  color: var(--home-ink);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.home-section-heading span {
+  color: #7c5ce0;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+}
+
+.home-feature-grid {
+  gap: 22px !important;
+  margin-bottom: 88px !important;
+}
+
+.home-feature-grid > div {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--home-line) !important;
+  border-radius: 10px !important;
+  background: var(--home-paper) !important;
+  padding: 28px 24px 24px !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.home-feature-grid > div::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  background: #078a52;
+  content: '';
+}
+
+.home-feature-grid > div:nth-child(2)::before { background: #3bd3fd; }
+.home-feature-grid > div:nth-child(3)::before { background: #fbbd41; }
+
+.home-feature-grid > div:hover {
+  box-shadow: 5px 5px 0 var(--home-ink) !important;
+  transform: translateY(-3px);
+}
+
+.home-feature-grid > div > div {
+  width: 46px;
+  height: 46px;
+  margin-bottom: 32px !important;
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  color: var(--home-ink);
+}
+
+.home-feature-grid > div:nth-child(1) > div { background: var(--home-mint) !important; }
+.home-feature-grid > div:nth-child(2) > div { background: var(--home-blue) !important; }
+.home-feature-grid > div:nth-child(3) > div { background: var(--home-yellow) !important; }
+
+.home-feature-grid > div > div svg,
+.home-feature-grid > div > div :deep(svg) {
+  color: var(--home-ink) !important;
+}
+
+.home-feature-grid h3 {
+  margin-bottom: 9px !important;
+  color: var(--home-ink) !important;
+  font-size: 17px !important;
+}
+
+.home-feature-grid p {
+  color: var(--home-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.75 !important;
+}
+
+.home-provider-heading {
+  margin-bottom: 24px !important;
+  text-align: left !important;
+}
+
+.home-provider-heading h2 {
+  margin-bottom: 7px !important;
+  color: var(--home-ink) !important;
+  font-size: 24px !important;
+}
+
+.home-provider-heading p {
+  color: var(--home-muted) !important;
+}
+
+.home-provider-list {
+  justify-content: flex-start !important;
+  gap: 10px !important;
+  margin-bottom: 20px !important;
+}
+
+.home-provider-list > div {
+  border: 1px solid var(--home-line) !important;
+  border-radius: 6px !important;
+  background: var(--home-paper) !important;
+  padding: 9px 12px !important;
+  box-shadow: none !important;
+  ring: none !important;
+}
+
+.home-provider-list > div > div {
+  width: 25px;
+  height: 25px;
+  border-radius: 4px !important;
+  background: var(--home-ink) !important;
+}
+
+.home-provider-list > div > span {
+  color: var(--home-ink) !important;
+  font-size: 12px !important;
+}
+
+.home-provider-list > div > span:last-child {
+  border-radius: 2px !important;
+  background: transparent !important;
+  color: var(--home-muted) !important;
+  font-size: 9px !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-shell > footer {
+  border-top: 1px solid var(--home-line) !important;
+  background: var(--home-canvas);
+  padding: 24px !important;
+}
+
+.home-shell > footer > div {
+  max-width: 1120px !important;
+}
+
+.home-shell > footer p,
+.home-shell > footer a {
+  color: var(--home-muted) !important;
+}
+
+.home-shell > footer a:hover {
+  color: var(--home-ink) !important;
+}
+
+@media (max-width: 760px) {
+  .home-header { padding: 12px 16px !important; }
+  .home-nav { align-items: center; }
+  .home-brand-copy { display: none; }
+  .home-actions { gap: 5px !important; }
+  .home-actions .home-icon-link span { display: none; }
+  .home-main { padding: 54px 16px 64px !important; }
+  .home-hero {
+    display: block !important;
+    margin-bottom: 40px !important;
+  }
+  .home-hero > div:last-child { display: none; }
+  .home-hero h1 { font-size: 48px !important; }
+  .home-lede { font-size: 18px !important; }
+  .home-description { font-size: 14px !important; }
+  .home-meta { margin-top: 22px; }
+  .home-shell .terminal-body { min-height: 190px; padding: 18px; font-size: 11px; }
+  .home-tags { margin-bottom: 54px !important; }
+  .home-section-heading { align-items: flex-start; flex-direction: column; gap: 5px; }
+  .home-feature-grid { margin-bottom: 64px !important; }
+  .home-provider-heading { text-align: left !important; }
+  .home-shell > footer > div { align-items: flex-start !important; text-align: left !important; }
 }
 </style>
