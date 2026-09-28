@@ -776,3 +776,425 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Sub2API visual foundation                                                  */
+/*                                                                            */
+/* The application has a large existing Tailwind surface.  Keep the utility  */
+/* API intact, but give shared primitives one restrained paper-and-ink look so */
+/* new and existing screens feel like the same product.                       */
+/* -------------------------------------------------------------------------- */
+:root {
+  --paper: #f7f5ef;
+  --paper-elevated: #fffdf8;
+  --paper-subtle: #efeee7;
+  --ink: #22302e;
+  --ink-soft: #485651;
+  --muted: #6f7a74;
+  --line: #d9ded6;
+  --line-strong: #c4cec5;
+  --accent: #66b5a5;
+  --accent-ink: #1f6258;
+  --accent-soft: #e3f1eb;
+  --accent-blue: #637fc7;
+  --accent-yellow: #d9ad49;
+  --accent-coral: #c87860;
+  --danger: #bc584f;
+  --success: #357b68;
+  --warning: #a87825;
+  --shadow-sm: 0 1px 2px rgb(34 48 46 / 6%);
+  --shadow-md: 0 8px 24px rgb(34 48 46 / 8%);
+  --control-height: 2.625rem;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+}
+
+html.dark {
+  --paper: #171c1a;
+  --paper-elevated: #202824;
+  --paper-subtle: #252e29;
+  --ink: #eef1e9;
+  --ink-soft: #d4dbd1;
+  --muted: #9da99e;
+  --line: #37443d;
+  --line-strong: #4d5b52;
+  --accent: #74c6b1;
+  --accent-ink: #9ee0cc;
+  --accent-soft: #1e3b32;
+  --accent-blue: #9aafe8;
+  --accent-yellow: #e7c36e;
+  --accent-coral: #e19b84;
+  --danger: #e18b82;
+  --success: #8ed0b7;
+  --warning: #e7c36e;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 24%);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 28%);
+}
+
+html {
+  background: var(--paper);
+}
+
+body {
+  background-color: var(--paper) !important;
+  background-image: none !important;
+  color: var(--ink) !important;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  border-color: var(--line);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  text-underline-offset: 0.18em;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--ink);
+}
+
+:where(button, a, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Shared controls: solid ink, quiet borders, no gradient or lift animation. */
+.btn {
+  min-height: var(--control-height);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
+  letter-spacing: 0;
+  transform: none !important;
+}
+
+.btn:hover,
+.btn:active {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-primary {
+  background: var(--accent-ink) !important;
+  border-color: var(--accent-ink) !important;
+  color: #f6fffb !important;
+}
+
+.btn-primary:hover {
+  background: #174d46 !important;
+  border-color: #174d46 !important;
+}
+
+html.dark .btn-primary {
+  background: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: #15221f !important;
+}
+
+html.dark .btn-primary:hover {
+  background: #8ad1bd !important;
+  border-color: #8ad1bd !important;
+}
+
+.btn-secondary {
+  background: var(--paper-elevated) !important;
+  border-color: var(--line-strong) !important;
+  color: var(--ink-soft) !important;
+}
+
+.btn-secondary:hover {
+  background: var(--paper-subtle) !important;
+  border-color: var(--ink-soft) !important;
+  color: var(--ink) !important;
+}
+
+.btn-ghost {
+  color: var(--ink-soft) !important;
+}
+
+.btn-ghost:hover {
+  background: var(--paper-subtle) !important;
+  color: var(--ink) !important;
+}
+
+.btn-danger,
+.btn-success,
+.btn-warning {
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.btn-danger {
+  background: var(--danger) !important;
+  border-color: var(--danger) !important;
+}
+
+.btn-success {
+  background: var(--success) !important;
+  border-color: var(--success) !important;
+}
+
+.btn-warning {
+  background: var(--warning) !important;
+  border-color: var(--warning) !important;
+}
+
+.btn-sm,
+.btn-md,
+.btn-lg,
+.btn-icon {
+  border-radius: var(--radius-sm) !important;
+}
+
+.input,
+input.input,
+select.input,
+textarea.input {
+  min-height: var(--control-height);
+  border: 1px solid var(--line-strong) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--paper-elevated) !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+.input::placeholder {
+  color: var(--muted) !important;
+}
+
+.input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgb(102 181 165 / 18%) !important;
+}
+
+.input-label {
+  color: var(--ink-soft) !important;
+  letter-spacing: 0.01em;
+}
+
+.input-hint {
+  color: var(--muted) !important;
+}
+
+/* Paper surfaces replace the old translucent glass treatment. */
+.glass,
+.glass-card,
+.card-glass,
+.card {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--paper-elevated) !important;
+  box-shadow: var(--shadow-sm) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.glass-card,
+.card-glass {
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.card-hover:hover {
+  border-color: var(--line-strong) !important;
+  box-shadow: var(--shadow-md) !important;
+  transform: none !important;
+}
+
+.card-header,
+.card-footer,
+.modal-header,
+.modal-footer,
+.dialog-header,
+.dialog-footer {
+  border-color: var(--line) !important;
+}
+
+.table-container {
+  border-color: var(--line) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: none !important;
+}
+
+.table th {
+  background: var(--paper-subtle) !important;
+  color: var(--ink-soft) !important;
+  border-color: var(--line) !important;
+}
+
+.table td {
+  color: var(--ink-soft) !important;
+  border-color: var(--line) !important;
+}
+
+.table tbody tr:hover {
+  background: var(--paper-subtle) !important;
+}
+
+.dropdown,
+.modal-content,
+.dialog-container,
+.toast {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-md) !important;
+  background: var(--paper-elevated) !important;
+  box-shadow: var(--shadow-md) !important;
+  backdrop-filter: none !important;
+}
+
+.toast-success {
+  border-left-color: var(--success) !important;
+}
+
+.toast-error {
+  border-left-color: var(--danger) !important;
+}
+
+.toast-warning {
+  border-left-color: var(--warning) !important;
+}
+
+.toast-info {
+  border-left-color: var(--accent-blue) !important;
+}
+
+.dropdown-item:hover {
+  background: var(--paper-subtle) !important;
+}
+
+.modal-overlay,
+.dialog-overlay {
+  background: rgb(24 31 28 / 48%) !important;
+  backdrop-filter: none !important;
+}
+
+.sidebar {
+  background: var(--paper-elevated) !important;
+  border-color: var(--line) !important;
+  box-shadow: none !important;
+}
+
+.sidebar-header {
+  border-color: var(--line) !important;
+}
+
+.sidebar-link {
+  border-radius: var(--radius-sm) !important;
+  color: var(--ink-soft) !important;
+}
+
+.sidebar-link:hover {
+  background: var(--paper-subtle) !important;
+  color: var(--ink) !important;
+}
+
+.sidebar-link-active {
+  background: var(--accent-soft) !important;
+  color: var(--accent-ink) !important;
+}
+
+html.dark .sidebar-link-active {
+  color: var(--accent) !important;
+}
+
+.sidebar-section-title {
+  color: var(--muted) !important;
+}
+
+.tabs {
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--paper-subtle) !important;
+}
+
+.tab {
+  border-radius: 4px !important;
+  color: var(--ink-soft) !important;
+}
+
+.tab-active {
+  background: var(--paper-elevated) !important;
+  color: var(--ink) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.progress {
+  background: var(--paper-subtle) !important;
+}
+
+.progress-bar {
+  background: var(--accent) !important;
+}
+
+.code {
+  border: 1px solid var(--line) !important;
+  border-radius: 4px !important;
+  background: var(--paper-subtle) !important;
+  color: var(--accent-ink) !important;
+}
+
+.code-block {
+  border: 1px solid #33413a !important;
+  border-radius: var(--radius-sm) !important;
+  background: #1f2824 !important;
+}
+
+.text-gradient {
+  background: none !important;
+  color: var(--accent-ink) !important;
+}
+
+.skeleton {
+  background: var(--paper-subtle) !important;
+}
+
+.divider {
+  background: var(--line) !important;
+}
+
+/* Existing layout utility hooks that used atmospheric gradients. */
+.bg-mesh-gradient {
+  background: transparent !important;
+}
+
+.shadow-glass,
+.shadow-glass-sm,
+.shadow-card,
+.shadow-card-hover {
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.shadow-glow,
+.shadow-glow-lg {
+  box-shadow: none !important;
+}
+
+/* Keep the product's common radius vocabulary compact and consistent. */
+.rounded-2xl,
+.rounded-xl {
+  border-radius: var(--radius-md) !important;
+}
+
+.rounded-lg {
+  border-radius: var(--radius-sm) !important;
+}
+
+@media (max-width: 640px) {
+  .modal-content,
+  .dialog-container {
+    border-radius: var(--radius-md) !important;
+  }
+}

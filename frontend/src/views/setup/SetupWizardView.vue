@@ -1,12 +1,10 @@
 <template>
-  <div
-    class="flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4 dark:from-dark-900 dark:to-dark-800"
-  >
+  <div class="setup-page flex min-h-screen items-center justify-center p-4">
     <div class="w-full max-w-2xl">
       <!-- Logo & Title -->
       <div class="mb-8 text-center">
         <div
-          class="mb-4 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-600 shadow-lg"
+          class="setup-mark mb-4 inline-flex h-16 w-16 items-center justify-center rounded-lg"
         >
           <Icon name="cog" size="xl" class="text-white" />
         </div>
@@ -684,3 +682,16 @@ async function waitForServiceRestart() {
   errorMessage.value = t('setup.status.timeout')
 }
 </script>
+
+<style scoped>
+.setup-page {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.setup-mark {
+  border: 1px solid var(--accent-ink);
+  background: var(--accent-ink);
+  box-shadow: 4px 4px 0 var(--accent-yellow);
+}
+</style>

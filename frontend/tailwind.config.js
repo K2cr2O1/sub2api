@@ -35,17 +35,17 @@ export default {
         },
         // 深色模式背景
         dark: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-          950: '#020617'
+          50: '#f6f4ec',
+          100: '#e8e7dd',
+          200: '#d5d4c9',
+          300: '#b8b8aa',
+          400: '#97998a',
+          500: '#777c71',
+          600: '#5c635a',
+          700: '#414941',
+          800: '#2d3530',
+          900: '#202723',
+          950: '#171b19'
         }
       },
       fontFamily: {
@@ -65,12 +65,12 @@ export default {
         mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
       },
       boxShadow: {
-        glass: '0 8px 32px rgba(0, 0, 0, 0.08)',
-        'glass-sm': '0 4px 16px rgba(0, 0, 0, 0.06)',
-        glow: '0 0 20px rgba(20, 184, 166, 0.25)',
-        'glow-lg': '0 0 40px rgba(20, 184, 166, 0.35)',
-        card: '0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06)',
-        'card-hover': '0 10px 40px rgba(0, 0, 0, 0.08)',
+        glass: '0 1px 2px rgba(34, 48, 46, 0.06)',
+        'glass-sm': '0 1px 2px rgba(34, 48, 46, 0.05)',
+        glow: 'none',
+        'glow-lg': 'none',
+        card: '0 1px 2px rgba(34, 48, 46, 0.06)',
+        'card-hover': '0 8px 24px rgba(34, 48, 46, 0.08)',
         'inner-glow': 'inset 0 1px 0 rgba(255, 255, 255, 0.1)'
       },
       backgroundImage: {

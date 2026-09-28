@@ -1,5 +1,5 @@
 <template>
-  <header class="glass sticky top-0 z-30 border-b border-gray-200/50 dark:border-dark-700/50">
+  <header class="app-header glass sticky top-0 z-30 border-b border-gray-200/50 dark:border-dark-700/50">
     <div class="flex h-16 items-center justify-between gap-2 px-2 sm:px-4 md:px-6">
       <!-- Left: Mobile Menu Toggle + Page Title -->
       <div class="flex shrink-0 items-center gap-2 sm:gap-4">
@@ -394,6 +394,95 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.app-header {
+  --header-paper: var(--paper-elevated);
+  --header-ink: var(--ink);
+  --header-muted: var(--muted);
+  --header-line: var(--line);
+  border-color: var(--header-line) !important;
+  background: var(--header-paper) !important;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: none;
+}
+
+.app-header :deep(h1),
+.app-header :deep(.text-gray-900),
+.app-header :deep(.dark\\:text-white) {
+  color: var(--header-ink);
+}
+
+.app-header :deep(.text-gray-500),
+.app-header :deep(.dark\\:text-dark-400),
+.app-header :deep(.text-gray-400) {
+  color: var(--header-muted);
+}
+
+.app-header :deep(.btn-ghost),
+.app-header :deep(.dropdown-item),
+.app-header :deep(a.rounded-lg),
+.app-header :deep(button.rounded-xl) {
+  color: var(--header-muted);
+}
+
+.app-header :deep(.btn-ghost:hover),
+.app-header :deep(.dropdown-item:hover),
+.app-header :deep(a.rounded-lg:hover),
+.app-header :deep(button.rounded-xl:hover) {
+  background: var(--paper-subtle);
+  color: var(--header-ink);
+}
+
+.app-header :deep(.bg-primary-50),
+.app-header :deep([class~="dark:bg-primary-900/20"]) {
+  background: var(--accent-soft);
+}
+
+.app-header :deep(.text-primary-600),
+.app-header :deep(.text-primary-700),
+.app-header :deep(.dark\\:text-primary-300),
+.app-header :deep(.dark\\:text-primary-400) {
+  color: var(--accent-ink);
+}
+
+.app-header :deep(.bg-gradient-to-br) {
+  background: var(--accent-ink);
+}
+
+.app-header :deep(.rounded-xl) {
+  border-radius: 0.55rem;
+}
+
+.app-header :deep(.dropdown) {
+  border: 1px solid var(--header-line);
+  border-radius: 0.55rem;
+  background: var(--paper-elevated);
+  box-shadow: var(--shadow-md);
+}
+
+.app-header :deep(.border-gray-100),
+.app-header :deep(.dark\\:border-dark-700) {
+  border-color: var(--header-line);
+}
+
+.app-header :deep(.bg-white) {
+  background: var(--paper-elevated);
+}
+
+:global(.dark) .app-header :deep(.btn-ghost:hover),
+:global(.dark) .app-header :deep(.dropdown-item:hover),
+:global(.dark) .app-header :deep(a.rounded-lg:hover),
+:global(.dark) .app-header :deep(button.rounded-xl:hover) {
+  background: var(--paper-subtle);
+  color: var(--header-ink);
+}
+
+:global(.dark) .app-header :deep(.dropdown),
+:global(.dark) .app-header :deep(.bg-white),
+:global(.dark) .app-header :deep(.bg-primary-50),
+:global(.dark) .app-header :deep([class~="dark:bg-primary-900/20"]) {
+  background: var(--paper-elevated);
+}
+
 .dropdown-enter-active,
 .dropdown-leave-active {
   transition: all 0.2s ease;

@@ -16,7 +16,7 @@
   <div
     v-else-if="compactHomeEnabled"
     data-testid="compact-home"
-    class="flex min-h-screen flex-col bg-gray-50 text-gray-900 dark:bg-dark-950 dark:text-white"
+    class="compact-home flex min-h-screen flex-col bg-gray-50 text-gray-900 dark:bg-dark-950 dark:text-white"
   >
     <header class="border-b border-gray-200 px-4 py-4 sm:px-6 dark:border-dark-800">
       <nav class="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-3 sm:gap-4">
@@ -1246,6 +1246,43 @@ onMounted(() => {
 
 .home-shell > footer a:hover {
   color: var(--home-ink) !important;
+}
+
+/* The compact entry point uses the same paper-and-ink system as the full home. */
+.compact-home {
+  background: var(--paper) !important;
+  color: var(--ink) !important;
+}
+
+.compact-home > header,
+.compact-home > footer {
+  border-color: var(--line) !important;
+  background: var(--paper) !important;
+}
+
+.compact-home .text-gray-500,
+.compact-home .text-gray-600,
+.compact-home .dark\:text-dark-300,
+.compact-home .dark\:text-dark-400 {
+  color: var(--muted) !important;
+}
+
+.compact-home .bg-gray-900 {
+  background: var(--accent-ink) !important;
+}
+
+.compact-home .bg-primary-600 {
+  background: var(--accent-ink) !important;
+}
+
+.compact-home .hover\:bg-primary-700:hover,
+.compact-home .hover\:bg-gray-800:hover {
+  background: #174d46 !important;
+}
+
+.compact-home .border-gray-200,
+.compact-home .dark\:border-dark-800 {
+  border-color: var(--line) !important;
 }
 
 @media (max-width: 760px) {

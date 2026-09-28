@@ -1,5 +1,5 @@
 <template>
-  <div class="table-page-layout" :class="{ 'mobile-mode': isMobile }">
+  <div class="table-page-layout app-table-layout" :class="{ 'mobile-mode': isMobile }">
     <!-- 固定区域：操作按钮 -->
     <div v-if="$slots.actions" class="layout-section-fixed">
       <slot name="actions" />
@@ -12,7 +12,7 @@
 
     <!-- 滚动区域：表格 -->
     <div class="layout-section-scrollable">
-      <div class="card table-scroll-container">
+      <div class="card table-scroll-container app-table-frame">
         <slot name="table" />
       </div>
     </div>
@@ -44,6 +44,56 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.app-table-layout {
+  --table-paper: var(--paper-elevated);
+  --table-ink: var(--ink);
+  --table-muted: var(--muted);
+  --table-line: var(--line);
+}
+
+.app-table-frame {
+  border-color: var(--table-line) !important;
+  border-radius: 0.55rem !important;
+  background: var(--table-paper) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+
+.app-table-frame :deep(thead) {
+  background: var(--paper-subtle) !important;
+  backdrop-filter: none;
+}
+
+.app-table-frame :deep(th) {
+  border-color: var(--table-line) !important;
+  color: var(--table-muted) !important;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+}
+
+.app-table-frame :deep(td) {
+  border-color: var(--line) !important;
+  color: var(--table-ink);
+}
+
+.app-table-frame :deep(tbody tr:hover) {
+  background: var(--paper-subtle);
+}
+
+.app-table-layout.mobile-mode .app-table-frame {
+  border-color: transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+:global(.dark) .app-table-layout {
+  --table-paper: var(--paper-elevated);
+  --table-ink: var(--ink);
+  --table-muted: var(--muted);
+  --table-line: var(--line);
+}
+
 /* 桌面端：Flexbox 布局 */
 .table-page-layout {
   @apply flex flex-col gap-6;

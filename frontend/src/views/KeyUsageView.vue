@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex min-h-screen flex-col bg-gray-50 dark:bg-dark-950">
+  <div class="key-usage-page relative flex min-h-screen flex-col">
     <!-- Header (same pattern as HomeView) -->
     <header class="relative z-20 px-6 py-4">
       <nav class="mx-auto flex max-w-6xl items-center justify-between">
@@ -944,13 +944,67 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.key-usage-page {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.key-usage-page :deep(.input-ring) {
+  border-color: var(--line-strong) !important;
+  border-radius: var(--radius-sm) !important;
+  background: var(--paper-elevated) !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
+}
+
+.key-usage-page :deep(.input-ring:focus) {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgb(102 181 165 / 18%) !important;
+  outline: none;
+}
+
+.key-usage-page :deep(.bg-white),
+.key-usage-page :deep(.bg-white\/90),
+.key-usage-page :deep([class~="dark:bg-dark-900"]) {
+  background: var(--paper-elevated) !important;
+}
+
+.key-usage-page :deep(.border-gray-200),
+.key-usage-page :deep([class~="dark:border-dark-700"]) {
+  border-color: var(--line) !important;
+}
+
+.key-usage-page :deep(.backdrop-blur-sm) {
+  backdrop-filter: none !important;
+}
+
+.key-usage-page :deep(.bg-primary-500) {
+  background: var(--accent-ink) !important;
+}
+
+.key-usage-page :deep([class~="hover:bg-primary-600"]:hover) {
+  background: #174d46 !important;
+}
+
+.key-usage-page :deep(.text-gray-900),
+.key-usage-page :deep([class~="dark:text-white"]) {
+  color: var(--ink) !important;
+}
+
+.key-usage-page :deep(.text-gray-500),
+.key-usage-page :deep([class~="dark:text-dark-400"]) {
+  color: var(--muted) !important;
+}
+</style>
+
+<style scoped>
 /* Input focus ring */
 .input-ring {
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 .input-ring:focus {
-  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.2);
-  border-color: #14b8a6;
+  box-shadow: 0 0 0 3px rgb(102 181 165 / 18%);
+  border-color: var(--accent);
   outline: none;
 }
 

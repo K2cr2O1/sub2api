@@ -976,6 +976,87 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
+.sidebar {
+  --sidebar-paper: var(--paper-elevated);
+  --sidebar-ink: var(--ink);
+  --sidebar-muted: var(--muted);
+  --sidebar-line: var(--line);
+  --sidebar-active: var(--accent-soft);
+  border-color: var(--sidebar-line);
+  background: var(--sidebar-paper);
+  box-shadow: 1px 0 0 var(--line);
+}
+
+.sidebar-header {
+  height: 4.5rem;
+  border-color: var(--sidebar-line);
+  background: var(--sidebar-paper);
+}
+
+.sidebar-logo {
+  border-radius: 0.45rem;
+  background: var(--accent-ink);
+  box-shadow: 3px 3px 0 var(--accent-yellow);
+}
+
+.sidebar-brand-title {
+  color: var(--sidebar-ink) !important;
+  letter-spacing: -0.01em;
+}
+
+.sidebar-nav {
+  padding: 1.25rem 0.75rem;
+}
+
+.sidebar-link {
+  border-radius: 0.45rem;
+  color: var(--sidebar-muted);
+  letter-spacing: 0.005em;
+}
+
+.sidebar-link:hover {
+  background: var(--paper-subtle);
+  color: var(--sidebar-ink);
+}
+
+.sidebar-link-active {
+  background: var(--sidebar-active) !important;
+  color: var(--accent-ink) !important;
+  box-shadow: inset 3px 0 0 var(--accent-ink);
+}
+
+.sidebar-section-title {
+  color: #8a9693;
+  letter-spacing: 0.1em;
+}
+
+.sidebar-section-title::after {
+  background: var(--sidebar-line);
+}
+
+.sidebar > .mt-auto {
+  border-color: var(--sidebar-line);
+  background: var(--paper);
+}
+
+:global(.dark) .sidebar {
+  background: var(--sidebar-paper);
+  box-shadow: 1px 0 0 var(--line);
+}
+
+:global(.dark) .sidebar-link:hover {
+  background: var(--paper-subtle);
+  color: var(--sidebar-ink);
+}
+
+:global(.dark) .sidebar-link-active {
+  color: var(--accent) !important;
+}
+
+:global(.dark) .sidebar > .mt-auto {
+  background: var(--paper);
+}
+
 .sidebar-logo {
   flex: 0 0 2.25rem;
   min-width: 2.25rem;
